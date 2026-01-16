@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { Save, Globe } from "lucide-react";
+import { Globe } from "lucide-react";
 import { toast } from "react-toastify";
 
 const Settings: React.FC = () => {
-  const [loading, setLoading] = useState(false);
   const [settings, setSettings] = useState({
     storeName: "My E-Commerce Store",
     supportEmail: "support@example.com",
@@ -22,10 +21,8 @@ const Settings: React.FC = () => {
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
     // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    setLoading(false);
     toast.success("Settings saved successfully");
   };
 

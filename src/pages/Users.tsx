@@ -3,7 +3,6 @@ import {
   Search,
   UserX,
   UserCheck,
-  Shield,
   Mail,
   Phone,
   ChevronLeft,
@@ -107,100 +106,98 @@ const Users: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
         {loading
           ? Array(6)
-              .fill(0)
-              .map((_, i) => (
-                <div
-                  key={i}
-                  className="bg-white p-6 rounded-2xl border border-slate-100 animate-pulse"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 rounded-full bg-slate-100"></div>
-                    <div className="flex-1 space-y-2">
-                      <div className="h-4 bg-slate-100 rounded w-3/4"></div>
-                      <div className="h-3 bg-slate-100 rounded w-1/2"></div>
-                    </div>
-                  </div>
-                </div>
-              ))
-          : users.map((user) => (
+            .fill(0)
+            .map((_, i) => (
               <div
-                key={user.id}
-                className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all group"
+                key={i}
+                className="bg-white p-6 rounded-2xl border border-slate-100 animate-pulse"
               >
-                <div className="flex items-start justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center text-slate-400 overflow-hidden">
-                      {user.avatar ? (
-                        <img
-                          src={user.avatar}
-                          alt=""
-                          className="w-full h-full object-cover"
-                        />
-                      ) : (
-                        <span className="text-xl font-bold text-slate-500">
-                          {user.name.charAt(0)}
-                        </span>
-                      )}
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-slate-900 flex items-center gap-2">
-                        {user.name}
-                      </h3>
-                      <p className="text-xs text-slate-500 font-medium uppercase tracking-wider">
-                        Customer
-                      </p>
-                    </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 rounded-full bg-slate-100"></div>
+                  <div className="flex-1 space-y-2">
+                    <div className="h-4 bg-slate-100 rounded w-3/4"></div>
+                    <div className="h-3 bg-slate-100 rounded w-1/2"></div>
                   </div>
-                  <button className="p-2 text-slate-400 hover:bg-slate-50 rounded-lg transition-colors">
-                    <MoreVertical size={18} />
-                  </button>
-                </div>
-
-                <div className="mt-6 space-y-3">
-                  <div className="flex items-center gap-3 text-sm text-slate-600">
-                    <Mail size={16} className="text-slate-400" />
-                    <span className="truncate">{user.email}</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-sm text-slate-600">
-                    <Phone size={16} className="text-slate-400" />
-                    <span>{user.phone || "N/A"}</span>
-                  </div>
-                </div>
-
-                <div className="mt-6 pt-6 border-t border-slate-100 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <div
-                      className={`w-2 h-2 rounded-full ${
-                        user.isActive ? "bg-emerald-500" : "bg-red-500"
-                      }`}
-                    ></div>
-                    <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
-                      {user.isActive ? "Active" : "Inactive"}
-                    </span>
-                  </div>
-                  <button
-                    onClick={() => handleBlockToggle(user)}
-                    className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                      user.isActive
-                        ? "text-red-600 bg-red-50 hover:bg-red-100"
-                        : "text-emerald-600 bg-emerald-50 hover:bg-emerald-100"
-                    }`}
-                  >
-                    {user.isActive ? (
-                      <>
-                        <UserX size={14} />
-                        Deactivate
-                      </>
-                    ) : (
-                      <>
-                        <UserCheck size={14} />
-                        Activate
-                      </>
-                    )}
-                  </button>
                 </div>
               </div>
-            ))}
+            ))
+          : users.map((user) => (
+            <div
+              key={user.id}
+              className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all group"
+            >
+              <div className="flex items-start justify-between">
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center text-slate-400 overflow-hidden">
+                    {user.avatar ? (
+                      <img
+                        src={user.avatar}
+                        alt=""
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <span className="text-xl font-bold text-slate-500">
+                        {user.name.charAt(0)}
+                      </span>
+                    )}
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-slate-900 flex items-center gap-2">
+                      {user.name}
+                    </h3>
+                    <p className="text-xs text-slate-500 font-medium uppercase tracking-wider">
+                      Customer
+                    </p>
+                  </div>
+                </div>
+                <button className="p-2 text-slate-400 hover:bg-slate-50 rounded-lg transition-colors">
+                  <MoreVertical size={18} />
+                </button>
+              </div>
+
+              <div className="mt-6 space-y-3">
+                <div className="flex items-center gap-3 text-sm text-slate-600">
+                  <Mail size={16} className="text-slate-400" />
+                  <span className="truncate">{user.email}</span>
+                </div>
+                <div className="flex items-center gap-3 text-sm text-slate-600">
+                  <Phone size={16} className="text-slate-400" />
+                  <span>{user.phone || "N/A"}</span>
+                </div>
+              </div>
+
+              <div className="mt-6 pt-6 border-t border-slate-100 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div
+                    className={`w-2 h-2 rounded-full ${user.isActive ? "bg-emerald-500" : "bg-red-500"
+                      }`}
+                  ></div>
+                  <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                    {user.isActive ? "Active" : "Inactive"}
+                  </span>
+                </div>
+                <button
+                  onClick={() => handleBlockToggle(user)}
+                  className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${user.isActive
+                    ? "text-red-600 bg-red-50 hover:bg-red-100"
+                    : "text-emerald-600 bg-emerald-50 hover:bg-emerald-100"
+                    }`}
+                >
+                  {user.isActive ? (
+                    <>
+                      <UserX size={14} />
+                      Deactivate
+                    </>
+                  ) : (
+                    <>
+                      <UserCheck size={14} />
+                      Activate
+                    </>
+                  )}
+                </button>
+              </div>
+            </div>
+          ))}
       </div>
 
       {/* Pagination */}

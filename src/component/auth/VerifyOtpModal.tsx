@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { apiCallPost } from "../../api/axios";
 import { toasts } from "../../component/common/ui/Toast/Toast";
 
 interface VerifyOtpModalProps {
