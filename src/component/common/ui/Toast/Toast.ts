@@ -16,6 +16,7 @@ const toastOptions: ToastOptions = {
   theme: "light",
 };
 
+
 /* ---------------------------------- */
 /* TOASTER CLASS */
 /* ---------------------------------- */
